@@ -1,3 +1,4 @@
+const { Router } = require("express");
 const express = require("express");
 const mysql = require("mysql");
 
@@ -26,6 +27,18 @@ connection.connect((err)=>{
 })
 
 //Route
+
+//path view
+app.set('view engine','ejs');
+app.set("view","views");
+
+//path image,css
+app.use(express.static(path.join(__dirname,'public')));
+app.use('images', express.static('images'));
+
+//path page
+app.use("/home",Router);
+
 //Create
 app.post("/create",async (req,res) =>{
     const {email,name, password} = req.body;
