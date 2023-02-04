@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('images', express.static('images'));
 
 //path page
-app.use("/home",Router);
+app.use("/",Router);
 
 //Create
 app.post("/create",async (req,res) =>{
